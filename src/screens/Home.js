@@ -1,13 +1,12 @@
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, Pressable } from "react-native";
 import Header from "../components/Header";
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign,  } from '@expo/vector-icons'; 
 import CustomCard from "../components/CustomCard";
 import CardModal from "../components/CartModal";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCardList, showModalUpdate } from "../redux/pokemonSlice";
 import { useEffect, useState } from "react";
 import PaidModal from "../components/PaidModal";
-import { FontAwesome } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCardsPaginated } from "../api/cards";
@@ -89,7 +88,7 @@ export default function Home({ navigation }) {
                             (cardName === '' ? true : item.name.includes(cardName)) &&
                             (cardsQuery.data.pages.length * 12 - 1) != index) {
 
-                                return (<CustomCard key={index} data={item}/>)
+                                return (<CustomCard key={item.id} data={item}/>)
 
                             }
 
@@ -100,10 +99,10 @@ export default function Home({ navigation }) {
                                 (set === '' ? true : (item.rarity === set)) && 
                                 (cardName === '' ? true : item.name.includes(cardName))) {
                                     return (
-                                        <View key={index} style={{alignItems: 'center' }}>
+                                        <View key={item.id} style={{alignItems: 'center' }}>
                                         <CustomCard data={item}/>
     
-                                        {!cardsQuery.isFetchingNextPage && <Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={index} onPress={cardsQuery.fetchNextPage}>
+                                        {!cardsQuery.isFetchingNextPage && <Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
                                             <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
                                             <Text style={{ color: 'grey'}}>Show more</Text>
                                         </Pressable>} 
@@ -117,7 +116,7 @@ export default function Home({ navigation }) {
                                     )
                                 } else {
                                     return (
-                                        <View key={index} style={{alignItems: 'center' }}>
+                                        <View key={item.id} style={{alignItems: 'center' }}>
                                         {/* <CustomCard data={item}/> */}
 
                                             
@@ -127,7 +126,7 @@ export default function Home({ navigation }) {
                                             style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
                                             source={require('../../assets/loading-gif.gif')}
                                         />) :
-                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={index} onPress={cardsQuery.fetchNextPage}>
+                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
                                             <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
                                             <Text style={{ color: 'grey'}}>Show more</Text>
                                         </Pressable>)}

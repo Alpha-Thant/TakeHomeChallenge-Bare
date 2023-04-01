@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
-import { Entypo } from '@expo/vector-icons';
 import { useDispatch, useSelector } from "react-redux";
 import { cardRemove, decreaseCardCount, increaseCardCount, } from "../redux/pokemonSlice";
 
