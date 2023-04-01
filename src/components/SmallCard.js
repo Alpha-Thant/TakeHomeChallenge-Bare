@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import { useDispatch, useSelector } from "react-redux";
 import { cardRemove, decreaseCardCount, increaseCardCount, } from "../redux/pokemonSlice";
 
-export default function SmallCard({data}) {
+function SmallCard({data}) {
     const [ showCross, setShowCross ] = useState(true);
     const dispatch = useDispatch();
     const { selectedCardList } = useSelector(state => state.pokemon);
@@ -75,6 +75,12 @@ export default function SmallCard({data}) {
         </View>
     )
 }
+
+SmallCard.propTypes = {
+    data: PropTypes.object
+}
+  
+export default SmallCard;
 
 const styles = StyleSheet.create({
     container : {

@@ -89,7 +89,7 @@ function CustomCard({data}) {
 }
 
 CustomCard.propTypes = {
-    name: PropTypes.object
+    data: PropTypes.object
   }
   
 export default CustomCard;

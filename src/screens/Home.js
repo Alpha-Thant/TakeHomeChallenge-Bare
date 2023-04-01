@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import PaidModal from "../components/PaidModal";
 import { FontAwesome } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCardsPaginated } from "../api/cards";
 import TopSection from "../components/TopSection";
 import { SafeAreaView } from "react-native-safe-area-context";

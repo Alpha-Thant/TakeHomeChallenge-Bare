@@ -1,4 +1,4 @@
-import {Modal, StyleSheet, Text, View, TouchableOpacity, ScrollView, Touchable} from 'react-native';
+import {Modal, StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import { Entypo } from '@expo/vector-icons'; 
 import SmallCard from './SmallCard';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function Header({handlePress}) {
+function Header({handlePress}) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -21,6 +21,10 @@ export default function Header({handlePress}) {
     )
 }
 
+
+Header.propTypes = {
+    handlePress: PropTypes.func
+}
 
 const styles = StyleSheet.create({
     container: {
