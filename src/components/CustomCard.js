@@ -88,10 +88,6 @@ function CustomCard({data}) {
     )
 }
 
-CustomCard.propTypes = {
-    data: PropTypes.object
-  }
-  
 export default CustomCard;
   
 

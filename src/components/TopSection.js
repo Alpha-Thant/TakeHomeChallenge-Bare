@@ -50,6 +50,16 @@ export default function TopSection() {
         )
     } 
 
+    if (RarityQuery.status === "loading" || SetQuery.status === 'loading' || TypeQuery.status === 'loading') {
+        return (
+            <View>
+                <Text>{JSON.stringify(RarityQuery.status)}</Text>
+                <Text>{JSON.stringify(SetQuery.status)}</Text>
+                <Text>{JSON.stringify(TypeQuery.status)}</Text>
+            </View>
+        )
+    }
+
 
     return (
         <View>

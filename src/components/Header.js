@@ -22,9 +22,8 @@ function Header({handlePress}) {
 }
 
 
-Header.propTypes = {
-    handlePress: PropTypes.func
-}
+export default Header;
+
 
 const styles = StyleSheet.create({
     container: {

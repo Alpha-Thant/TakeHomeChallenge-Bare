@@ -74,10 +74,6 @@ function SmallCard({data}) {
         </View>
     )
 }
-
-SmallCard.propTypes = {
-    data: PropTypes.object
-}
   
 export default SmallCard;
 

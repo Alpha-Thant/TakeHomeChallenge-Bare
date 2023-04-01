@@ -68,7 +68,18 @@ const pokemonSlice = createSlice({
       state.cardName = action.payload;
     },
 
+
+
   },
 })
-export const {showModalUpdate, paidModalUpdate, cardAdd, cardRemove, clearCardList, increaseCardCount, decreaseCardCount, changeType, changeSet, changeRarity, changeCardName } = pokemonSlice.actions
+export const {showModalUpdate, paidModalUpdate, cardAdd, cardRemove, clearCardList, increaseCardCount, decreaseCardCount, 
+  changeType, changeSet, changeRarity, changeCardName,
+} = pokemonSlice.actions
+
 export default pokemonSlice.reducer
+
+export const selectType = (type, types) => type === '' ? true : types.includes(type);
+export const selectSet = (stateSet, set) => stateSet === '' ? true : stateSet === set;
+export const selectRarity = (stateRarity, rarity) => stateRarity === '' ? true : stateRarity === rarity;
+export const selectCardName = (stateCardName, name) => stateCardName === '' ? true : name.includes(stateCardName);
+

@@ -1,13 +1,12 @@
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, Pressable } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, Pressable, Dimensions } from "react-native";
 import Header from "../components/Header";
-import { AntDesign,  } from '@expo/vector-icons'; 
+import { AntDesign, FontAwesome  } from '@expo/vector-icons'; 
 import CustomCard from "../components/CustomCard";
 import CardModal from "../components/CartModal";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCardList, showModalUpdate } from "../redux/pokemonSlice";
+import { clearCardList, selectCardName, selectRarity, selectSet, selectType, showModalUpdate } from "../redux/pokemonSlice";
 import { useEffect, useState } from "react";
 import PaidModal from "../components/PaidModal";
-import { Dimensions } from 'react-native';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCardsPaginated } from "../api/cards";
 import TopSection from "../components/TopSection";
@@ -17,7 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 export default function Home({ navigation }) {
-    const { showModal, selectedCardList, type, rarity, set, cardName } = useSelector(state => state.pokemon);
+    const { showModal, selectedCardList, type, set, rarity, cardName } = useSelector(state => state.pokemon);
     const [ totalCount, setTotalCount] = useState(0);
     const dispatch = useDispatch()
 
@@ -48,17 +47,6 @@ export default function Home({ navigation }) {
     })
 
 
-    if (cardsQuery.status === "loading") {
-        return (
-            <View style={styles.mainContainer}>
-                <Header handlePress={onPressHandler}/>
-                <Image style={{position: 'absolute', top: 70, left: screenWidth/2 - 35, zIndex: 1}} source={require('../../assets/logo.png')}/>
-                <TopSection/>
-                <Text style={{flex: 1, alignSelf: 'center'}}>Loading Cards...</Text>
-            </View>
-            )
-    } 
-
     if (cardsQuery.status === 'error') {
         return (
             <View style={{flex: 1, alignItems: 'center',justifyContent: 'center',}}>
@@ -77,48 +65,34 @@ export default function Home({ navigation }) {
             <View style={styles.container}>
                 <ScrollView style={{ width: screenWidth}}>
                     {
-                        cardsQuery.data.pages
+                        cardsQuery.data?.pages
                         .flatMap(data=> data.cards.data) 
                         .map((item, index) => {
 
-                            //name rarity set type filter here
-                            if ((type === '' ? true : item.types.includes(type)) && 
-                            (rarity === '' ? true : (item.rarity === rarity))  && 
-                            (set === '' ? true : (item.rarity === set)) && 
-                            (cardName === '' ? true : item.name.includes(cardName)) &&
-                            (cardsQuery.data.pages.length * 12 - 1) != index) {
-
-                                return (<CustomCard key={item.id} data={item}/>)
-
-                            }
-
+                            /// name rarity set type filter here
                             /// Last item binding to show (show more button)
+
                             if((cardsQuery.data.pages.length * 12 - 1) == index) {
-                                if ((type === '' ? true : item.types.includes(type)) && 
-                                (rarity === '' ? true : (item.rarity === rarity))  && 
-                                (set === '' ? true : (item.rarity === set)) && 
-                                (cardName === '' ? true : item.name.includes(cardName))) {
+                                if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
                                     return (
                                         <View key={item.id} style={{alignItems: 'center' }}>
                                         <CustomCard data={item}/>
     
-                                        {!cardsQuery.isFetchingNextPage && <Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
-                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
-                                            <Text style={{ color: 'grey'}}>Show more</Text>
-                                        </Pressable>} 
-                                        
-                                        {cardsQuery.isFetchingNextPage && <Image
+                                        {cardsQuery.isFetchingNextPage ?
+                                        (<Image
                                             resizeMode='contain'
                                             style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
                                             source={require('../../assets/loading-gif.gif')}
-                                        />}
+                                        />) :
+                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
+                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
+                                            <Text style={{ color: 'grey'}}>Show more</Text>
+                                        </Pressable>)}
                                         </View>
                                     )
                                 } else {
                                     return (
                                         <View key={item.id} style={{alignItems: 'center' }}>
-                                        {/* <CustomCard data={item}/> */}
-
                                             
                                         {cardsQuery.isFetchingNextPage ?
                                         (<Image
@@ -133,8 +107,10 @@ export default function Home({ navigation }) {
                                         </View>
                                     )
                                 }
-
-
+                            } else {
+                                if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
+                                    return (<CustomCard key={item.id} data={item}/>)
+                                }
                             }
 
                             
