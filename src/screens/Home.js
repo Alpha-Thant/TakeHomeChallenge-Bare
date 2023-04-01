@@ -119,17 +119,18 @@ export default function Home({ navigation }) {
                                     return (
                                         <View key={index} style={{alignItems: 'center' }}>
                                         {/* <CustomCard data={item}/> */}
-    
-                                        {!cardsQuery.isFetchingNextPage && <Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={index} onPress={cardsQuery.fetchNextPage}>
-                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
-                                            <Text style={{ color: 'grey'}}>Show more</Text>
-                                        </Pressable>} 
-                                        
-                                        {cardsQuery.isFetchingNextPage && <Image
+
+                                            
+                                        {cardsQuery.isFetchingNextPage ?
+                                        (<Image
                                             resizeMode='contain'
                                             style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
                                             source={require('../../assets/loading-gif.gif')}
-                                        />}
+                                        />) :
+                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={index} onPress={cardsQuery.fetchNextPage}>
+                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
+                                            <Text style={{ color: 'grey'}}>Show more</Text>
+                                        </Pressable>)}
                                         </View>
                                     )
                                 }
