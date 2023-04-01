@@ -33,8 +33,6 @@ export default function TopSection() {
     const [isFocusRarity, setIsFocusRarity] = useState(false);
     const [isFocusSet, setIsFocusSet] = useState(false);
 
-    const data = [];
-
     const dispatch = useDispatch();
 
     const onCardNameChange = (newText) => {

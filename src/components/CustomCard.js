@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, TouchableWithoutFeedba
 import { useDispatch, useSelector } from "react-redux";
 import { cardAdd, cardRemove } from "../redux/pokemonSlice";
 
-export default function CustomCard({data}) {
+function CustomCard({data}) {
     
     const [selected, setSelected] = useState(false);
     const { selectedCardList } = useSelector(state => state.pokemon);
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
         const index = selectedCardList.findIndex((card) => card.id === data.id);
@@ -86,6 +87,13 @@ export default function CustomCard({data}) {
         </TouchableWithoutFeedback>
     )
 }
+
+CustomCard.propTypes = {
+    name: PropTypes.object
+  }
+  
+export default CustomCard;
+  
 
 
 const styles = StyleSheet.create({

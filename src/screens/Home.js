@@ -1,10 +1,10 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, FlatList, ScrollView, RefreshControl, Image, Pressable } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, Pressable } from "react-native";
 import Header from "../components/Header";
 import { AntDesign } from '@expo/vector-icons'; 
 import CustomCard from "../components/CustomCard";
 import CardModal from "../components/CartModal";
 import { useDispatch, useSelector } from "react-redux";
-import { changeType, clearCardList, showModalUpdate } from "../redux/pokemonSlice";
+import { clearCardList, showModalUpdate } from "../redux/pokemonSlice";
 import { useEffect, useState } from "react";
 import PaidModal from "../components/PaidModal";
 import { FontAwesome } from '@expo/vector-icons';
