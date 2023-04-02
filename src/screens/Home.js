@@ -11,9 +11,9 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCardsPaginated } from "../api/cards";
 import TopSection from "../components/TopSection";
 import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
 
 // var keys = Object.keys(cardsQuery.data.pages)
-
 
 export default function Home({ navigation }) {
     const { showModal, selectedCardList, type, set, rarity, cardName } = useSelector(state => state.pokemon);
