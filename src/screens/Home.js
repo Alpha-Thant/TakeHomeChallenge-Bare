@@ -65,7 +65,7 @@ export default function Home({ navigation }) {
                 <ScrollView style={{ width: screenWidth}}>
                     {
                         cardsQuery.data?.pages
-                        .flatMap(data=> data.cards.data) 
+                        .flatMap(data => data.cards.data)
                         .map((item, index) => {
 
                             /// name rarity set type filter here
@@ -91,8 +91,10 @@ export default function Home({ navigation }) {
                                     </Pressable>)}
                                     </View>
                                 )
-                            } else if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
-                                return (<CustomCard key={item.id} data={item}/>)
+                            } else  {
+                                {selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name) ?
+                                    (<CustomCard data={item}/>) : null
+                                }
                             }
                             
 
