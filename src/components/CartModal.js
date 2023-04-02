@@ -16,10 +16,10 @@ export default function CardModal() {
     let countTemp = 0;
     let priceTemp = 0;
 
-    selectedCardList.map((card) => {
+    for(card of selectedCardList) {
       countTemp += card.count;
       priceTemp += (card.count * card.price)
-    })
+    }
 
     setTotalCount(countTemp);
     setTotalPrice(priceTemp.toFixed(2));

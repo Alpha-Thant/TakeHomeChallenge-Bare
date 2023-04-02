@@ -50,17 +50,6 @@ export default function TopSection() {
         )
     } 
 
-    if (RarityQuery.status === "loading" || SetQuery.status === 'loading' || TypeQuery.status === 'loading') {
-        return (
-            <View>
-                <Text>{JSON.stringify(RarityQuery.status)}</Text>
-                <Text>{JSON.stringify(SetQuery.status)}</Text>
-                <Text>{JSON.stringify(TypeQuery.status)}</Text>
-            </View>
-        )
-    }
-
-
     return (
         <View>
             <View style={styles.firstRow}>
@@ -83,7 +72,7 @@ export default function TopSection() {
                         maxHeight={300}
                         labelField="label"
                         valueField="value"
-                        data={TypeQuery.data}
+                        data={TypeQuery.data === undefined ? [] : TypeQuery.data}
                         placeholder={!isFocusType ? 'Type' : '...'}
                         value={selectedType}
                         onFocus={() => setIsFocusType(true)}
@@ -107,7 +96,7 @@ export default function TopSection() {
                         maxHeight={300}
                         labelField="label"
                         valueField="value"
-                        data={RarityQuery.data}
+                        data={RarityQuery.data === undefined ? [] : RarityQuery.data}
                         placeholder={!isFocusRarity ? 'Rarity' : '...'}
                         value={selectedRarity}
                         onFocus={() => setIsFocusRarity(true)}
@@ -131,7 +120,7 @@ export default function TopSection() {
                         maxHeight={300}
                         labelField="name"
                         valueField="id"
-                        data={SetQuery.data}
+                        data={SetQuery.data === undefined ? [] : SetQuery.data}
                         placeholder={!isFocusSet ? 'Set' : '...'}
                         value={selectedSet}
                         onFocus={() => setIsFocusSet(true)}

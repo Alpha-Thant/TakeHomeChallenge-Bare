@@ -26,10 +26,10 @@ export default function Home({ navigation }) {
 
     useEffect(() => {
         let countTemp = 0;
-    
-        selectedCardList.map((card) => {
-          countTemp += card.count;
-        })
+
+        for(card of selectedCardList) {
+            countTemp += card.count;
+        }
     
         setTotalCount(countTemp);    
     
@@ -73,45 +73,29 @@ export default function Home({ navigation }) {
                             /// Last item binding to show (show more button)
 
                             if((cardsQuery.data.pages.length * 12 - 1) == index) {
-                                if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
-                                    return (
-                                        <View key={item.id} style={{alignItems: 'center' }}>
-                                        <CustomCard data={item}/>
-    
-                                        {cardsQuery.isFetchingNextPage ?
-                                        (<Image
-                                            resizeMode='contain'
-                                            style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
-                                            source={require('../../assets/loading-gif.gif')}
-                                        />) :
-                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
-                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
-                                            <Text style={{ color: 'grey'}}>Show more</Text>
-                                        </Pressable>)}
-                                        </View>
-                                    )
-                                } else {
-                                    return (
-                                        <View key={item.id} style={{alignItems: 'center' }}>
-                                            
-                                        {cardsQuery.isFetchingNextPage ?
-                                        (<Image
-                                            resizeMode='contain'
-                                            style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
-                                            source={require('../../assets/loading-gif.gif')}
-                                        />) :
-                                        (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
-                                            <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
-                                            <Text style={{ color: 'grey'}}>Show more</Text>
-                                        </Pressable>)}
-                                        </View>
-                                    )
-                                }
-                            } else {
-                                if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
-                                    return (<CustomCard key={item.id} data={item}/>)
-                                }
+                                return (
+                                    <View key={item.id} style={{alignItems: 'center' }}>
+
+                                    {selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name) ?
+                                        (<CustomCard data={item}/>) : null
+                                    }
+                                    
+                                    {cardsQuery.isFetchingNextPage ?
+                                    (<Image
+                                        resizeMode='contain'
+                                        style={{height:50, width: 50, marginBottom: 120, marginTop: 50}}
+                                        source={require('../../assets/loading-gif.gif')}
+                                    />) :
+                                    (<Pressable style={{ flexDirection:'row', paddingBottom: 100, paddingTop: 50}} key={item.id} onPress={cardsQuery.fetchNextPage}>
+                                        <FontAwesome style={{marginRight: 10, marginTop: 3}} name="search" size={12} color="grey" />
+                                        <Text style={{ color: 'grey'}}>Show more</Text>
+                                    </Pressable>)}
+                                    </View>
+                                )
+                            } else if (selectType(type, item.types) && selectSet(set, item.set.id) && selectRarity(rarity, item.rarity) && selectCardName(cardName, item.name)) {
+                                return (<CustomCard key={item.id} data={item}/>)
                             }
+                            
 
                             
                             
