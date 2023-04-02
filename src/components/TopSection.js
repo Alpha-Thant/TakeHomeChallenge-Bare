@@ -3,10 +3,9 @@ import { globalSytles } from "../../styles/globalStyle";
 import { useQuery } from "@tanstack/react-query";
 import { getRarities, getSets, getTypes } from "../api/cards";
 import { Dropdown } from "react-native-element-dropdown";
-import { useState } from "react";
+import React,{ useState } from "react";
 import { changeCardName, changeRarity, changeSet, changeType } from "../redux/pokemonSlice";
 import { useDispatch } from "react-redux";
-import React from "react";
 
 export default function TopSection() {
 

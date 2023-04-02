@@ -5,13 +5,12 @@ import CustomCard from "../components/CustomCard";
 import CardModal from "../components/CartModal";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCardList, selectCardName, selectRarity, selectSet, selectType, showModalUpdate } from "../redux/pokemonSlice";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import PaidModal from "../components/PaidModal";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCardsPaginated } from "../api/cards";
 import TopSection from "../components/TopSection";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
 
 // var keys = Object.keys(cardsQuery.data.pages)
 

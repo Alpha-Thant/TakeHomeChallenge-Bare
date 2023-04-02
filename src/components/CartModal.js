@@ -3,8 +3,7 @@ import { Entypo } from '@expo/vector-icons';
 import SmallCard from './SmallCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCardList, paidModalUpdate, showModalUpdate } from '../redux/pokemonSlice';
-import { useEffect, useState } from 'react';
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
 
 export default function CardModal() {
