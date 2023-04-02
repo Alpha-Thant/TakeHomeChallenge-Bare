@@ -3,6 +3,7 @@ import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cardRemove, decreaseCardCount, increaseCardCount, } from "../redux/pokemonSlice";
+import React from "react";
 
 function SmallCard({data}) {
     const [showCross, setShowCross] = useState(true);

@@ -4,6 +4,7 @@ import SmallCard from './SmallCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCardList, paidModalUpdate, showModalUpdate } from '../redux/pokemonSlice';
 import { useEffect, useState } from 'react';
+import React from "react";
 
 
 export default function CardModal() {

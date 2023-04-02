@@ -6,6 +6,7 @@ import Login from './src/screens/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from "react";
 
 const Stack = createStackNavigator();
 const queryClient = new QueryClient()

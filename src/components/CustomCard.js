@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { cardAdd, cardRemove } from "../redux/pokemonSlice";
+import React from "react";
 
 function CustomCard({data}) {
     

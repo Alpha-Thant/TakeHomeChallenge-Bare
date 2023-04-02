@@ -2,6 +2,7 @@ import { Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Entypo, Ionicons } from '@expo/vector-icons'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { paidModalUpdate } from '../redux/pokemonSlice';
+import React from "react";
 
 export default function PaidModal() {
   const { paidModal } = useSelector(state => state.pokemon);

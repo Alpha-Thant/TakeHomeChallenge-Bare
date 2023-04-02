@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { globalSytles } from "../../styles/globalStyle";
+import React from "react";
 
 export default function Login({ navigation }) {
 
