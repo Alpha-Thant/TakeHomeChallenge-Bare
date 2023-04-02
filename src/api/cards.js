@@ -23,7 +23,7 @@ export async function getCardsPaginated(page) {
 export async function getRarities() {
   const res = await axios.get(Rarities_URL);
   let rarityArray = [{label: 'All', value: ''}];
-  for(rarity of res.data.data) {
+  for(let rarity of res.data.data) {
     rarityArray.push({
       label: rarity,
       value: rarity,
@@ -35,7 +35,7 @@ export async function getRarities() {
 export async function getSets() {
   const res = await axios.get(Sets_URL);
   let setArray = [{id: '', name: 'All'}];
-  for(set of res.data.data) {
+  for(let set of res.data.data) {
     setArray.push({
       id: set.id,
       name: set.name,
@@ -47,7 +47,7 @@ export async function getSets() {
 export async function getTypes() {
   const res = await axios.get(Types_URL);
     let typeArray = [{label: 'All', value: ''}];
-    for(type of res.data.data) {
+    for(let type of res.data.data) {
       typeArray.push({
         label: type,
         value: type,

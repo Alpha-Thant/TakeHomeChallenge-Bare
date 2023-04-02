@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cardRemove, decreaseCardCount, increaseCardCount, } from "../redux/pokemonSlice";
 
 function SmallCard({data}) {
-    const [ showCross, setShowCross ] = useState(true);
+    const [showCross, setShowCross] = useState(true);
     const dispatch = useDispatch();
     const { selectedCardList } = useSelector(state => state.pokemon);
 

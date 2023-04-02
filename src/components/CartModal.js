@@ -16,7 +16,7 @@ export default function CardModal() {
     let countTemp = 0;
     let priceTemp = 0;
 
-    for(card of selectedCardList) {
+    for(let card of selectedCardList) {
       countTemp += card.count;
       priceTemp += (card.count * card.price)
     }

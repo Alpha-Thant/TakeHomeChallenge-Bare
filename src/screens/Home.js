@@ -17,7 +17,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home({ navigation }) {
     const { showModal, selectedCardList, type, set, rarity, cardName } = useSelector(state => state.pokemon);
-    const [ totalCount, setTotalCount] = useState(0);
+    const [totalCount, setTotalCount] = useState(0);
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export default function Home({ navigation }) {
     useEffect(() => {
         let countTemp = 0;
 
-        for(card of selectedCardList) {
+        for(let card of selectedCardList) {
             countTemp += card.count;
         }
     

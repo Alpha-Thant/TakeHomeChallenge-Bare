@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 const queryClient = new QueryClient()
 
 
-
 export default function App() {
   return (
     <Provider store={store}>
